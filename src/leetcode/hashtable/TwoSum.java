@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.hashtable;
 /**
  * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 
@@ -9,6 +9,9 @@ package leetcode;
 
 	Because nums[0] + nums[1] = 2 + 7 = 9,
 	return [0, 1].
+	
+	刚开始用的是暴力解法，要运行64ms，真是不能忍啊
+	此题目可以应用HashTable
  * @author nxiangbo
  *
  */
@@ -29,6 +32,10 @@ public class TwoSum {
         }
         return result;
     }
+	
+//	public static int[] twoSumByHash(int[] nums, int target){
+//		
+//	} 
 	
 	public static void main(String[] args) {
 //		int[] nums ={2,7,11,15};
