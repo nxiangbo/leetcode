@@ -1,7 +1,13 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.LinkedList;
+
 public class ClimbingStairs {
-	  public static int climbStairs(int n) {
+	public static int climbStairs(int n) {
 //	        if(n==1){
 //	        	return 1;
 //	        } else if(n==2){
@@ -32,4 +38,22 @@ public class ClimbingStairs {
 		}
 		 return c; 
 	  }
+	  
+	  public static void swap(int x,int y){
+		  int temp = x;
+		  x = y;
+		  y =  temp;
+	  }
+	  
+	  public static void main(String[] args) {
+		int a = 10; int b = 4;
+		swap(a, b);
+		System.out.println("a = "+a+"  b  = "+b);
+		  	String s1 = "Programming";
+	        String s2 = new String("Programming");
+	        String s3 = "Program" + "ming";
+	        System.out.println(s1 == s2);
+	        System.out.println(s1 == s3);
+	        System.out.println(s1 == s1.intern());
+	}
 }
