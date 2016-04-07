@@ -76,9 +76,94 @@ public class ValidNumber {
 		}
 		
 	}
+	/**
+	 * [sign]integral-digits[.[fractional-digits]][e|E[sign]exponential-digits]
+	 * @param s
+	 * @return
+	 */
+	public static boolean isNumeric(String s){
+		if(s == null){
+			return false;
+		}
+		boolean isNumeric = true;
+		int len = s.length();
+		int index = 0;
+		if(s.charAt(index) == '+' || s.charAt(index) == '-'){
+			index++;
+		}
+		if(index == len){
+			return false;
+		}
+		
+		//scanDigits
+		while(isDigits(s, index)){
+			index++;
+		}
+		
+		if(index != len){
+			if(s.charAt(index)=='.'){
+				index++;
+				if(!isDigits(s, index)){
+					return false;
+				}
+				//scanDigits
+				while(isDigits(s, index)){
+					index++;
+				}
+				if(index ==len){
+					return true;
+				}
+				
+				if(s.charAt(index)=='e' || s.charAt(index) == 'E'){
+					index++;
+					if(s.charAt(index)=='+' || s.charAt(index) == '-'){
+						index++;
+					}
+					if(index == len){
+						return false;
+					}
+					
+					while(isDigits(s, index)){
+						index++;
+					}
+					isNumeric = (index==len)?true:false;
+					
+				}
+			} else if(s.charAt(index)=='e' || s.charAt(index)=='E'){
+				index++;
+				if(index == len){
+					return false;
+				}
+				if(index<=len && s.charAt(index)=='+' || s.charAt(index) == '-'){
+					index++;
+				}
+				
+				while(isDigits(s, index)){
+					index++;
+				}
+				isNumeric = (index==len)?true:false;
+			} else{
+				isNumeric = false;
+			}
+			
+			
+		}
+		
+		return isNumeric&&(index==len);
+		
+		
+	}
+	
+	public static boolean isDigits(String s, int index){
+		if(index != s.length() && s.charAt(index)>='0' && s.charAt(index) <= '9'){
+			return true;
+		} else{
+			return false;
+		}
+	}
 	
 	public static void main(String[] args) {
-		String s = ".e32";
-		System.out.println(isNumber(s));
+		String s = ".";
+		System.out.println(isNumeric(s));
 	}
 }

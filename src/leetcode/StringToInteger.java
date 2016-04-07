@@ -36,6 +36,7 @@ public class StringToInteger {
 		result = result * flag;
 		return result;
 	}
+	
 
 	public static void main(String[] args) {
 		String str = "-2147483647";

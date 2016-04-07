@@ -6,13 +6,6 @@ import java.util.List;
 
 public class Triangle {
 	 public static int minimumTotal(List<List<Integer>> triangle) {
-//		 if(triangle.size()>0){
-//			 for (int i = 0; i < triangle.size(); i++) {
-//				List<Integer> row = triangle.get(i);
-//				result += getMinimumForRow(row);
-//			}
-//		 }
-//		 return result;
 		 if(triangle.size() == 1){
 			 return triangle.get(0).get(0);
 		 }
