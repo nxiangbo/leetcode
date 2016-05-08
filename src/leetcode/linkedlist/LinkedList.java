@@ -15,7 +15,8 @@ public class LinkedList {
 		}
 	}
 
-	private ListNode head, tail;
+	private static ListNode head;
+	private ListNode tail;
 
 	public boolean isEmpty() {
 		return head == null;
@@ -104,6 +105,24 @@ public class LinkedList {
 		return locate(pos).data;
 	}
 	
+	public static ListNode removeElements(ListNode head, int val) {
+		if(head==null){
+            return null;
+        }
+        ListNode x = head;
+        while(x.next!=null){
+            if(x.next.data==val){
+                x.next = x.next.next;
+            } else{
+                x = x.next;
+            }
+            
+        }
+        
+        return (head.data==val)?head.next:head;
+	}
+	
+	
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if(l1 ==null || l2 ==null){
         	return null;
@@ -126,27 +145,44 @@ public class LinkedList {
     }
 	
 	public static void main(String[] args) throws Exception {
+//		LinkedList list = new LinkedList();
+//		LinkedList list2 = new LinkedList();
+//		list.addHead(2);
+//		list.addFromTail(3);
+//		list.addFromTail(9);
+//		list2.addHead(3);
+//		list2.addFromTail(4);
+//		list2.addFromTail(5);
+//		
+//		list.print();
+//		int length = list.size();
+//		int length2 = list2.size();
+////		System.out.println(length);
+//		for(int i = 0;i<3;i++){
+//			ListNode result = list.addTwoNumbers(list.locate(i), list2.locate(i));
+//			System.out.println("result = "+result.data);
+//		}
+//		
+//		ListNode preListNode = list.locate(0);
+//		System.out.println(preListNode.data);
+//		list.insert(23, 2);
+//		list.print();
+		
 		LinkedList list = new LinkedList();
-		LinkedList list2 = new LinkedList();
-		list.addHead(2);
+		
+		list.addFromHead(1);
+		list.addFromTail(2);
 		list.addFromTail(3);
-		list.addFromTail(9);
-		list2.addHead(3);
-		list2.addFromTail(4);
-		list2.addFromTail(5);
-		
+		list.addFromTail(4);
+		list.addFromTail(5);
+		list.addFromTail(1);
+		list.addFromTail(2);
+		list.addFromTail(1);
 		list.print();
-		int length = list.size();
-		int length2 = list2.size();
-//		System.out.println(length);
-		for(int i = 0;i<3;i++){
-			ListNode result = list.addTwoNumbers(list.locate(i), list2.locate(i));
-			System.out.println("result = "+result.data);
+		
+		ListNode head2 = removeElements(head, 1);
+		for (ListNode x = head2; x!=null; x=x.next) {
+			System.out.print(x.data+", ");
 		}
-		
-		ListNode preListNode = list.locate(0);
-		System.out.println(preListNode.data);
-		list.insert(23, 2);
-		list.print();
 	}
 }

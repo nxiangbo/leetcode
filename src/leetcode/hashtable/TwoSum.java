@@ -1,4 +1,9 @@
 package leetcode.hashtable;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 
@@ -33,26 +38,25 @@ public class TwoSum {
         return result;
     }
 	
-//	public static int[] twoSumByHash(int[] nums, int target){
-//		
-//	} 
+	public static int[] twoSumByHash(int[] nums, int target){
+		int[] result = new int[2];
+		Map<Integer, Integer> map = new HashMap<>();
+		for (int i = 0; i < nums.length; i++) {
+			if(map.containsKey(target-nums[i])){
+				result[1] = i;
+				result[0] = map.get(target-nums[i]);
+				return result;
+			}
+			map.put(nums[i], i);
+		}
+		return result;
+	} 
 	
 	public static void main(String[] args) {
-//		int[] nums ={2,7,11,15};
+		int[] nums ={2,4,7,11,15};
 //		int target = 9;
-		int[] nums = {-1,21,32,11,-6,-3,12,-2};
+//		int[] nums = {-1,21,32,11,-6,-3,12,-2};
 		int target = 9;
-//		int[] nums = {2};
-//		int target = 3;
-		
-		int result[] = null;
-		result = twoSum(nums,target);
-		if(result.length>=1){
-			for (int i = 0; i < result.length; i++) {
-				System.out.println(result[i]);
-			}
-		}else{
-			System.out.println("result=null");
-		}
+		System.out.println(twoSumByHash(nums, target));
 	}
 }

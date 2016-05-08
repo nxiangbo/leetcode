@@ -5,15 +5,6 @@ public class UglyNumber {
 		if (num == 1) {
 			return true;
 		}
-		if(num == 0){
-			return false;
-		}
-		if(num == Integer.MIN_VALUE){
-			return false;
-		}
-		if(num < 0){
-			return false;
-		}
 		
 		while(num%2==0){
 			num /= 2;
@@ -26,34 +17,8 @@ public class UglyNumber {
 		while(num%5 == 0){
 			num /= 5;
 		}
-//		
-		for (int i = 7; i < Math.sqrt(num); i+=2) {
-			while((num % i) == 0){
-				num = num/i;
-				if(i>5){
-					return false;
-				}
-			}
-		}
 		
-		if(num>5){
-			return false;
-		}
-//		int i = 2;
-//		while (i<num/2) {
-//			if((num%i)==0){
-////				System.out.println(i);
-//				if(isPrime(i)){
-//					System.out.println(i);
-//					if(i > 5){
-//						return false;
-//					}
-//				}
-//			}
-//			i++;
-//		}
-//		
-		return true;
+		return (num==1);
 	}
 	
 	public static boolean isPrime(int num){
