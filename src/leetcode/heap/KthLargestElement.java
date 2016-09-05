@@ -73,6 +73,59 @@ public class KthLargestElement {
 //		Random random = new Random();
 //		for
 //	}
+	
+	/**
+	 * 平均来说，基于切分的选择算法的运行时间是线性级别的
+	 * @param nums
+	 * @param k
+	 * @return
+	 */
+	public int findKthLargestWithSelect(int[] nums, int k) {
+        if(nums.length<=0) return -1;
+        shuffle(nums);
+        int low = 0;
+        int high = nums.length-1;
+        k = nums.length-k;
+        while(low<high){
+            int j = partition2(nums, low, high);
+            if(j==k) return nums[j];
+            else if(j>k) high = j-1;
+            else if(j<k) low = j+1;
+        }
+        return nums[k];
+    }
+    
+    public int partition2(int[] nums, int low, int high){
+        int i = low;
+        int j = high+1;
+        int pivot = nums[low];
+        while(true){
+            while(i<high&&nums[++i]<pivot) ;
+            while(j>low&&nums[--j]>pivot) ;
+            if(i>=j) break;
+            swap(nums,i, j);
+            
+        }
+        swap(nums, low, j);
+        return j;
+    }
+    
+    public void swap(int[] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    
+    public void shuffle(int[] nums){
+        Random rand = new Random();
+        int n = nums.length;
+        for(int i=0;i<n;i++){
+            int r = i+rand.nextInt(n-i);
+            int temp = nums[i];
+            nums[i] = nums[r];
+            nums[r] = temp;
+        }
+    }
 	public static void main(String[] args) throws Exception {
 		int[] nums = {1};
 		int result = findKthLargest(nums,1);

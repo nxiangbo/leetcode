@@ -2,7 +2,6 @@ package leetcode.sort;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 /**
@@ -58,14 +57,23 @@ public class LargestNumber {
 	 * @param args
 	 */
 	public static String largestNumber2(int[] nums){
-		String[] strs = new String[nums.length];
-		String result = "";
-		for (int i = 0; i < nums.length; i++) {
-			strs[i] = Integer.toString(nums[i]);
-		}
 		if(nums.length<=0){
 			return null ;
 		}
+		String[] strs = new String[nums.length];
+		for (int i = 0; i < nums.length; i++) {
+			strs[i] = Integer.toString(nums[i]);
+		}
+		
+//		Comparator<String> comparator = new Comparator<String>() {
+//			
+//			@Override
+//			public int compare(String str1, String str2) {
+//				String s1 = str1+str2;
+//				String s2 = str2+str1;
+//				return s1.compareTo(s2);
+//			}
+//		};
 		
 		Arrays.sort(strs, new Comparator<String>() {
 
@@ -77,14 +85,15 @@ public class LargestNumber {
 			}
 		});
 		
-		System.out.println("strs = "+strs[strs.length-1].charAt(0));
 		if(strs[0].charAt(0)=='0'){
 			return "0";
 		}
-		for (int i = 0; i < strs.length; i++) {
-			result += strs[i];
+		
+		StringBuilder sb = new StringBuilder();
+		for (String s : strs) {
+			sb.append(s);
 		}
-		return result;
+		return sb.toString();
 	}
 	
 

@@ -46,9 +46,38 @@ public class TopKFrequentElement {
 
 	}
 	
+	public static  List<Integer> topKFrequentII(int[] nums, int k) {
+		
+		List<Integer>[] buckets = new List[nums.length+1];
+		Map<Integer,Integer> freqMap = new HashMap<>();
+		for (Integer num : nums) {
+			freqMap.put(num,freqMap.get(num)==null?1:freqMap.get(num)+1);
+		}
+		
+		for (Integer key : freqMap.keySet()) {
+			int freq = freqMap.get(key);
+			
+			if(buckets[freq]==null){
+				buckets[freq] = new ArrayList<>();
+			}
+			
+			buckets[freq].add(key);
+		}
+		
+		List<Integer> res = new ArrayList<>();
+		for(int i=buckets.length-1;i>=0&&res.size()<k;i--){
+			if(buckets[i]!=null){
+				res.addAll(buckets[i]);
+			}
+		}
+		
+		return res;
+	}
+	
+	
 	public static void main(String[] args) {
 		int[] nums = {1,1,1,2,2,3};
 		int k = 2;
-		topKFrequent(nums, k);
+		topKFrequentII(nums, k);
 	}
 }

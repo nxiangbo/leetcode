@@ -67,9 +67,17 @@ public class StringToInteger {
 	    return total * sign;
 	}
 	
+	public static boolean myatoi(String str){
+		if(str==null)  return false;
+		if(str.matches("(\\s+)?(-|\\+)?\\d+")){
+			return true;
+		} else{
+			return false;
+		}
+	}
 
 	public static void main(String[] args) {
-		String str = "-2147483647";
-		System.out.println(myAtoi(str));
+		String str = "  -12";
+		System.out.println(myatoi(str));
 	}
 }

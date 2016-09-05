@@ -2,6 +2,7 @@ package leetcode.hashtable;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class ContainsDuplicate {
 	public static boolean containsDupliacate(int[] nums){
@@ -20,6 +21,10 @@ public class ContainsDuplicate {
 			if(freq>=1){
 				return true;
 			} 
+		}
+		
+		for (Entry<Integer, Integer> entry : map.entrySet()) {
+			System.out.println(entry.getKey());
 		}
 		return false;
 	}

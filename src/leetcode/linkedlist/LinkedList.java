@@ -28,6 +28,10 @@ public class LinkedList {
 			tail = head;
 		}
 	}
+	
+	public void addHead(ListNode node){
+		head = node;
+	}
 
 	public void addTail(int item) {
 		if (!isEmpty()) {
@@ -47,6 +51,14 @@ public class LinkedList {
 			}
 			System.out.println();
 		}
+	}
+	
+	public void print(ListNode node){
+		while(node!=null){
+			System.out.print(node.data+",");
+			node = node.next;
+		}
+		System.out.println();
 	}
 
 	public void addFromHead(int item) {

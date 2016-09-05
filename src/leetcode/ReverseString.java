@@ -5,8 +5,6 @@ public class ReverseString {
 		if(s==null){
 			return null;
 		}
-//		String result1 = "";
-//		String result2 = "";
 		
 		char[] a = s.toCharArray();
         int low = 0;
@@ -19,10 +17,6 @@ public class ReverseString {
         	high--;
         }
 		String result = new String(a);
-//        for (int i = s.length()-1,j=0; j<=i; i--,j++) {
-//			result1+=s.charAt(i);
-//			result2+=s.charAt(j);
-//		}
         return result;
     }
 	public static void main(String[] args) {
